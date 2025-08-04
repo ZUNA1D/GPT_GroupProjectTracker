@@ -77,6 +77,7 @@ const registerUser = async (req, res) => {
         res.status(500).json({ message: 'Internal Server Error' });
     }
 };
+
 const loginUser = async (req, res) => {
     try{
         const { email, password } = req.body;
@@ -262,52 +263,6 @@ const resetPasswordRequest = async (req, res) => {
 };
 
 
-// const verifyResetPasswordTokenAndResetPassword = async (req, res) => {
-//     try {
-//         const { token, newPassword, confirmPassword } = req.body;
-//         const payload = jwt.verify(token, process.env.JWT_SECRET); 
-
-//         if (!payload) {
-//             return res.status(401).json({ message: 'Unauthorized' });
-//         }
-
-//         const { userId, purpose } = payload;
-//         if (purpose !== 'reset-password') { // error may show
-//             return res.status(401).json({ message: 'Unauthorized' });
-//         }
-
-//         const verification = await Verification.findOne({ userId, token });
-//         if (!verification) {    
-//             return res.status(401).json({ message: 'Unauthorized' });
-//         }
-
-//         const isTokenExpired = verification.expiresAt < new Date();
-//         if (isTokenExpired) {
-//             return res.status(401).json({ message: 'Reset token has expired' });
-//         }
-
-//         const user = await User.findById(userId);
-//         if (!user) {
-//             return res.status(404).json({ message: 'User not found' });
-//         }
-
-//         if (newPassword !== confirmPassword) {
-//             return res.status(400).json({ message: 'Passwords do not match' });
-//         }
-
-//         const salt = await bcrypt.genSalt(10);
-//         const hashedPassword = await bcrypt.hash(newPassword, salt);
-//         user.password = hashedPassword; 
-//         user.save();
-//         await verification.findByIdAndDelete(verification._id);
-//         res.status(200).json({ message: 'Password reset successfully' });
-
-
-//     } catch (error) {
-//         console.error('Error in resetting password:', error);
-//         res.status(500).json({ message: 'Internal Server Error' });
-//     }
-// };
 
 const verifyResetPasswordTokenAndResetPassword = async (req, res) => {
   try {

@@ -12,13 +12,18 @@ export function meta({}: Route.MetaArgs) {
 
 const Homepage = () => {
   return (
-    <div className='w-full h-screen flex items-center justify-center gap-4'>
+    <div className='w-full h-screen flex flex-col items-center justify-center gap-4'>
+
+        <h1 className='text-4xl font-bold text-gray-800'>GPT_GroupProjectTracker</h1>
+
+        <div className="flex gap-4">
         <Link to="/sign-in">
             <Button className='bg-blue-500 white-text'>Login</Button>
         </Link>
         <Link to="/sign-up">
             <Button className='bg-green-500 white-text'>Sign Up</Button>    
         </Link>
+        </div>
         
     </div>
   )
