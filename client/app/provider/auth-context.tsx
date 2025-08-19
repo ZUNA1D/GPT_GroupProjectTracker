@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 
     useEffect(() => {
-        // Simulate fetching user data from an API or local storage
+        // fetch user data from API or local storage
         const fetchUser = async () => {
             try {
                 // Replace with actual API call

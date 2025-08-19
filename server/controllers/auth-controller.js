@@ -145,7 +145,7 @@ const loginUser = async (req, res) => {
         await user.save();
 
         const userData = user.toObject();
-        delete userData.password; // Remove password from user data
+        delete userData.password; // remove password from user data
         res.status(200).json({
             message: 'Login successful',
             token,
