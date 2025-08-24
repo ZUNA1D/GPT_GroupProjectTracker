@@ -9,7 +9,17 @@ import type { Workspace } from '@/types';
 import React, { useState } from 'react'
 import { Navigate, Outlet, useNavigate } from 'react-router';
 
+export const clientLoader = async () => {
+  try{
+    const [workspaces] = await Promise.all([
+      fetchData("/workspaces"),
+    ]); 
+    return {workspaces};
+  }catch(error){
+    console.log(error);
+  }
 
+}
 
 const DashboardLayout = () => {
 

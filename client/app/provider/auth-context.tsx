@@ -20,7 +20,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const navigate = useNavigate();
     const currentPath = useLocation().pathname;
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             logout();
             navigate('/sign-in');
         };
-        // Listen for logout events
+        // listen for logout events
         window.addEventListener('force-logout', handleLogout);
         return () => {
             // Clean up the event listener
